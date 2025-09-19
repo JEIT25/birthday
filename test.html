@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffd6e8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: float 6s infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Envelope */
+    .envelope {
+      width: 200px;
+      height: 150px;
+      position: relative;
+      background: #ff9ecf;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 75px solid #ff6faa;
+      position: absolute;
+      top: -75px;
+      left: 0;
+    }
+
+    /* Greeting message */
+    .message {
+      display: none;
+      text-align: center;
+      color: #bf2c8c;
+      font-size: 1.8rem;
+      animation: fadeIn 2s ease forwards;
+      z-index: 2;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Final section */
+    .final {
+      display: none;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .final img {
+      width: 250px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: hsl(var(--hue), 70%, 60%);
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) rotate(0);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    /* Nyan Cat */
+    .nyan-cat {
+      position: fixed;
+      bottom: 20px;
+      left: -200px;
+      width: 180px;
+      z-index: 0;
+      animation: fly 12s linear infinite;
+    }
+
+    @keyframes fly {
+      0% {
+        left: -200px;
+      }
+
+      100% {
+        left: 110%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background music -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/nAw2ooeubSQ?autoplay=1&loop=1&playlist=nAw2ooeubSQ"
+    title="YouTube background music" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+
+  <!-- Floating hearts -->
+  <div id="hearts"></div>
+
+  <!-- Envelope -->
+  <div id="envelopeContainer">
+    <div class="envelope">
+      Open Me
+      <div class="flap"></div>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div id="message" class="message">
+    <h1>🎂 Happy Birthday, Future Nurse! 💉💖</h1>
+    <p>Wishing you endless smiles, love, and success in your nursing journey chay. 💕</p>
+  </div>
+
+  <!-- Final -->
+  <div id="final" class="final">
+    <h2>💖 Happy Birthday 🎉💖</h2>
+    <img
+      src="https://scontent.fcgy4-1.fna.fbcdn.net/v/t15.5256-10/548248029_1531817891157331_672046296633258273_n.jpg?stp=dst-webp_e15_q70_s750x1335_u&efg=eyJ1cmxnZW4iOiJ1cmxnZW5fZnJvbV91cmwifQ&_nc_eui2=AeHfOFf_sizsexxzfHyt-3hWUxMQVTZ5cOxTExBVNnlw7C8nSBFDfBtZsxyK91zrUs_ZmoSZBpcF1EPtYkD0Mh7m&_nc_cid=5917&_nc_ad=z-m&_nc_rml=0&_nc_ht=scontent.fcgy4-1.fna&_nc_cat=106&_nc_ohc=WroCKfLMFfwQ7kNvwEzCaC1&_nc_gid=6IncB-VBh8V-V2gjTwgt7Q&ccb=1-7&_nc_sid=b4c9f4&oh=00_AfbBK-XHbLCzkmtbq_cjOGxhsxHU9WTvW-8c3tOAb7j4zw&oe=68D29645"
+      alt="Cute Happy Birthday">
+    <div class="confetti" style="z-index: 100" id="confetti"></div>
+  </div>
+
+  <!-- Nyan Cat GIF -->
+  <img class="nyan-cat" src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="Nyan Cat">
+
+  <script>
+    const envelope = document.getElementById("envelopeContainer");
+    const message = document.getElementById("message");
+    const final = document.getElementById("final");
+
+    // Envelope click → show message
+    envelope.addEventListener("click", () => {
+      envelope.style.display = "none";
+      message.style.display = "block";
+
+      setTimeout(() => {
+        message.style.display = "none";
+        final.style.display = "block";
+        launchConfetti();
+      }, 4000); // Show message 4s then final
+    });
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.getElementById("hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 500);
+
+    // Confetti
+    function launchConfetti() {
+      const confetti = document.getElementById("confetti");
+      for (let i = 0; i < 100; i++) {
+        const piece = document.createElement("div");
+        piece.classList.add("confetti-piece");
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = Math.random() * -100 + "px";
+        piece.style.setProperty("--hue", Math.floor(Math.random() * 360));
+        piece.style.animationDuration = (2 + Math.random() * 3) + "s";
+        confetti.appendChild(piece);
+        setTimeout(() => piece.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+
+</html>
